@@ -9,7 +9,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 
+//私有库
 import Action.*;
+import Bean.*;
+import Interface.Method.ImagePanel;
 
 public class GroupChat extends JFrame{
 	private   boolean   startDrag   =   false;  //拖动检测 

@@ -13,7 +13,7 @@
 package Action;
 
 import Interface.Landed;
-import Interface.MainInterface;
+import Interface.MainInterface.MainInterface;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;

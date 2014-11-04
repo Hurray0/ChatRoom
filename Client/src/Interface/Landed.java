@@ -1,22 +1,25 @@
 package Interface;
 
+//共有库调用
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+//私有库调用
 import Action.*;
+import Const.Resouce.*;
+import Interface.Method.ImagePanel;
 
 public class Landed extends JFrame {
 
+    //为了鼠标拖动设置的变量
     private boolean startDrag = false;  //拖动检测 
     private Point p = null;   //鼠标位置
-    public JTextField jtf_id = new JTextField();
-    public JTextField jtf_code = new JTextField();
-    public String[] status = {"", "在线", "隐身"};
-    public JComboBox jcb_status = new JComboBox(status);
-
-    //JFrame
-    final JFrame t = this;
+    
+    //控件变量
+    private JTextField jtf_id = new JTextField();
+    private JTextField jtf_code = new JTextField();
+    private JComboBox jcb_status = new JComboBox(R.STATUS);//赋值三种在线状态
 
     public static void main(Landed mylanded) {
         mylanded.setResizable(false);
@@ -148,20 +151,4 @@ public class Landed extends JFrame {
         return jcb_status.getSelectedIndex();
     }
 
-}
-//背景图片类
-
-class ImagePanel extends JPanel {
-
-    Image image = null;
-
-    //在Panel上画图
-
-    ImagePanel(Image image) {
-        this.image = image;
-    }
-
-    protected void paintComponent(Graphics g) {
-        g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
-    }
 }

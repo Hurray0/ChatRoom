@@ -9,11 +9,16 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 
+//私有库
+import Action.*;
+import Bean.*;
+import Interface.Method.ImagePanel;
+
 public class PrivateChat extends JFrame{
 	private   boolean   startDrag   =   false;  //拖动检测 
 	private   Point   p   =   null;   //鼠标位置
 	
-	PrivateChat(frienddata myfriend,userdata mydata)//之所以要用PrivateChat_2代替它是因为setUndecorated会将Frame中所有东西清除
+	public PrivateChat(frienddata myfriend,userdata mydata)//之所以要用PrivateChat_2代替它是因为setUndecorated会将Frame中所有东西清除
 	{
 		PrivateChat_2 prc = new PrivateChat_2(myfriend,mydata);
 		prc.setResizable(false);//不可调整大小
@@ -74,12 +79,7 @@ public class PrivateChat extends JFrame{
 			jbt_exit.setBounds(575, 0, 25, 25);
 			mainpanel.add(jbt_exit);
 			final JFrame t = this;//下面在方法中不能用this，所以用t替换一下
-			jbt_exit.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent e)
-				{
-					t.hide();
-				}
-			});
+			jbt_exit.addActionListener(new Act_Close(this));
 			
 			//最小化按钮
 			ImageIcon minimize1 = new ImageIcon("Image/minimize1.png");
@@ -90,12 +90,7 @@ public class PrivateChat extends JFrame{
 			jbt_minimize.setRolloverIcon(minimize2);
 			jbt_minimize.setBounds(550, 0, 25, 25);
 			mainpanel.add(jbt_minimize);
-			jbt_minimize.addActionListener( new ActionListener(){
-				public void actionPerformed(ActionEvent e)
-				{
-					 t.setState( Frame.ICONIFIED ); 
-				}
-			});
+			jbt_minimize.addActionListener(new Act_Minimize(this));
 			
 			//好友的头像
 				//从服务器读取，之后再写！！
