@@ -1,4 +1,4 @@
-package MyQQ;
+package Interface;
 
 import javax.swing.*;
 
@@ -9,17 +9,16 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 
-public class GroupChat extends JFrame{
-	private   boolean   startDrag   =   false;  //ÍÏ¶¯¼ì²â 
-	private   Point   p   =   null;   //Êó±êÎ»ÖÃ
+public class PrivateChat extends JFrame{
+	private   boolean   startDrag   =   false;  //æ‹–åŠ¨æ£€æµ‹ 
+	private   Point   p   =   null;   //é¼ æ ‡ä½ç½®
 	
-	GroupChat(group mygroup,userdata mydata)//Ö®ËùÒÔÒªÓÃPrivateChat_2´úÌæËüÊÇÒòÎªsetUndecorated»á½«FrameÖĞËùÓĞ¶«Î÷Çå³ı
+	PrivateChat(frienddata myfriend,userdata mydata)//ä¹‹æ‰€ä»¥è¦ç”¨PrivateChat_2ä»£æ›¿å®ƒæ˜¯å› ä¸ºsetUndecoratedä¼šå°†Frameä¸­æ‰€æœ‰ä¸œè¥¿æ¸…é™¤
 	{
-		GroupChat_2 prc = new GroupChat_2(mygroup,mydata);
-		prc.setResizable(false);
-		prc.setResizable(false);//²»¿Éµ÷Õû´óĞ¡
+		PrivateChat_2 prc = new PrivateChat_2(myfriend,mydata);
+		prc.setResizable(false);//ä¸å¯è°ƒæ•´å¤§å°
 		prc.setUndecorated(true);
-		//this.setTitle("Óë"+fr_name+"ÁÄÌìÖĞ");
+		//this.setTitle("ä¸"+fr_name+"èŠå¤©ä¸­");
 		prc.setLocationRelativeTo(null);
 		prc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		prc.setSize(600, 400);
@@ -27,21 +26,20 @@ public class GroupChat extends JFrame{
 		prc.setLocationRelativeTo(null);
 	}
 
-	public class GroupChat_2 extends JFrame
+	public class PrivateChat_2 extends JFrame
 	{
-		JFrame tt = this;
 		private JTextArea jta_print = new JTextArea();
 		private JTextArea jta_send = new JTextArea();
-		GroupChat_2(final group mygroup,final userdata mydata)
+		PrivateChat_2(final frienddata myfriend,final userdata mydata)
 		{
-			//±³¾°
-			ImageIcon imageicon=new ImageIcon("Image/back_chat2.png");
+			//èƒŒæ™¯
+			ImageIcon imageicon=new ImageIcon("Image/back_chat.png");
 			Image img=imageicon.getImage();
 			ImagePanel mainpanel = new ImagePanel(img);
 			add(mainpanel);
 			mainpanel.setLayout(null);
 			
-			//Êó±êÍÏ¶¯(copy from CSDN)
+			//é¼ æ ‡æ‹–åŠ¨(copy from CSDN)
 			addMouseListener(new   MouseAdapter()
 			{   
 				 public   void   mousePressed(MouseEvent   e)
@@ -66,7 +64,7 @@ public class GroupChat extends JFrame{
 				}   
 			});
 			
-			//¹Ø±Õ°´Å¥
+			//å…³é—­æŒ‰é’®
 			ImageIcon exit1 = new ImageIcon("Image/exit1.png");
 			ImageIcon exit2 = new ImageIcon("Image/exit2.png");
 			ImageIcon exit3 = new ImageIcon("Image/exit3.png");
@@ -75,7 +73,7 @@ public class GroupChat extends JFrame{
 			jbt_exit.setRolloverIcon(exit2);
 			jbt_exit.setBounds(575, 0, 25, 25);
 			mainpanel.add(jbt_exit);
-			final JFrame t = this;//ÏÂÃæÔÚ·½·¨ÖĞ²»ÄÜÓÃthis£¬ËùÒÔÓÃtÌæ»»Ò»ÏÂ
+			final JFrame t = this;//ä¸‹é¢åœ¨æ–¹æ³•ä¸­ä¸èƒ½ç”¨thisï¼Œæ‰€ä»¥ç”¨tæ›¿æ¢ä¸€ä¸‹
 			jbt_exit.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e)
 				{
@@ -83,7 +81,7 @@ public class GroupChat extends JFrame{
 				}
 			});
 			
-			//×îĞ¡»¯°´Å¥
+			//æœ€å°åŒ–æŒ‰é’®
 			ImageIcon minimize1 = new ImageIcon("Image/minimize1.png");
 			ImageIcon minimize2 = new ImageIcon("Image/minimize2.png");
 			ImageIcon minimize3 = new ImageIcon("Image/minimize3.png");
@@ -99,47 +97,58 @@ public class GroupChat extends JFrame{
 				}
 			});
 			
-			//ÈºµÄÃû×Ö
-			String string_fr_name = "Èº£º"+mygroup.getname();
+			//å¥½å‹çš„å¤´åƒ
+				//ä»æœåŠ¡å™¨è¯»å–ï¼Œä¹‹åå†å†™ï¼ï¼
+			ImageIcon imi_fr_picture = myfriend.getpicture();
+			Image img_fr_picture=imi_fr_picture.getImage();
+			ImagePanel imp_fr_picture = new ImagePanel(img_fr_picture);
+			imp_fr_picture.setBounds(10,8,30,30);
+			mainpanel.add(imp_fr_picture);
+			
+			//å¥½å‹çš„åå­—
+				//ä»æœåŠ¡å™¨è¯»å–ï¼Œä¹‹åå†å†™ï¼ï¼
+			String string_fr_name = myfriend.getname();
 			JLabel jl_fr_name = new JLabel(string_fr_name);
-			jl_fr_name.setFont(new Font("Î¢ÈíÑÅºÚ",Font.PLAIN,20));
+			jl_fr_name.setFont(new Font("å¾®è½¯é›…é»‘",Font.PLAIN,15));
 			jl_fr_name.setForeground(new Color(0,0,0));
-			jl_fr_name.setBounds(16, 1, 600, 30);
-			JLabel jl_fr_name2 = new JLabel(string_fr_name);
-			jl_fr_name2.setFont(new Font("Î¢ÈíÑÅºÚ",Font.PLAIN,20));
-			jl_fr_name2.setForeground(new Color(255,255,255));
-			jl_fr_name2.setBounds(15, 0, 600, 30);
-			mainpanel.add(jl_fr_name2);
+			jl_fr_name.setBounds(50, 0, 100, 30);
 			mainpanel.add(jl_fr_name);
+			JLabel jl_fr_name2 = new JLabel(string_fr_name);
+			jl_fr_name2.setFont(new Font("å¾®è½¯é›…é»‘",Font.PLAIN,15));
+			jl_fr_name2.setForeground(new Color(255,255,255));
+			jl_fr_name2.setBounds(51, 1, 100, 30);
+			mainpanel.add(jl_fr_name2);
 			
-			//ÈººÅ
-			String string_group_ID = "("+mygroup.getID()+")";
-			JLabel jl_group_ID = new JLabel(string_group_ID);
-			jl_group_ID.setFont(new Font("Î¢ÈíÑÅºÚ",Font.PLAIN,10));
-			jl_group_ID.setForeground(new Color(0,0,150));
-			jl_group_ID.setBounds(55, 22, 600, 30);
-			mainpanel.add(jl_group_ID);
 			
-			//ÁÄÌìĞÅÏ¢¿ò
-			//JTextArea jta_print = new JTextArea();Ğ´×÷ÀàË½ÓĞ±äÁ¿ÁË
-			jta_print.setLineWrap(true);//ÕâÁ½ĞĞÊ¹JTextAreaÀïµÄÎÄ×Ö²»ÄÜ±»ĞŞ¸Ä
-			jta_print.setEditable(false);//ÕâÁ½ĞĞÊ¹JTextAreaÀïµÄÎÄ×Ö²»ÄÜ±»ĞŞ¸Ä
+			//å¥½å‹çš„ID
+				//ä»æœåŠ¡å™¨è¯»å–ï¼Œä¹‹åå†å†™ï¼ï¼
+			String string_fr_ID = "("+myfriend.getID()+")";
+			JLabel jl_fr_ID = new JLabel(string_fr_ID);
+			jl_fr_ID.setFont(new Font("å¾®è½¯é›…é»‘",Font.PLAIN,10));
+			jl_fr_ID.setForeground(new Color(0,0,150));
+			jl_fr_ID.setBounds(50, 20, 100, 30);
+			mainpanel.add(jl_fr_ID);
+			
+			//èŠå¤©ä¿¡æ¯æ¡†
+			//JTextArea jta_print = new JTextArea();å†™ä½œç±»ç§æœ‰å˜é‡äº†
+			jta_print.setLineWrap(true);//è¿™ä¸¤è¡Œä½¿JTextAreaé‡Œçš„æ–‡å­—ä¸èƒ½è¢«ä¿®æ”¹
+			jta_print.setEditable(false);//è¿™ä¸¤è¡Œä½¿JTextAreaé‡Œçš„æ–‡å­—ä¸èƒ½è¢«ä¿®æ”¹
 			JScrollPane jsp_print = new JScrollPane(jta_print);
-			jsp_print.setBounds(10, 55, 430, 195);
+			jsp_print.setBounds(10, 55, 580, 195);
 			mainpanel.add(jsp_print);
 			
-			//ÊäÈëĞÅÏ¢¿ò
-			//JTextArea jta_send = new JTextArea();Ğ´×÷ÀàË½ÓĞ±äÁ¿ÁË
+			//è¾“å…¥ä¿¡æ¯æ¡†
+			//JTextArea jta_send = new JTextArea();å†™ä½œç±»ç§æœ‰å˜é‡äº†
 			JScrollPane jsp_send = new JScrollPane(jta_send);
-			jsp_send.setBounds(10, 300, 430, 90);
+			jsp_send.setBounds(10, 300, 580, 90);
 			mainpanel.add(jsp_send);
 			
-			//·¢ËÍ°´Å¥
-			JButton jbt_send = new JButton("·¢ËÍ");
-			jbt_send.setBounds(360, 260, 70, 30);
+			//å‘é€æŒ‰é’®
+			JButton jbt_send = new JButton("å‘é€");
+			jbt_send.setBounds(510, 260, 70, 30);
 			mainpanel.add(jbt_send);
 			
-			//Ìí¼Ó±íÇé
+			//æ·»åŠ è¡¨æƒ…
 			ImageIcon imi_sendface = new ImageIcon("Image/sendface.png");
 			JButton jbt_sendface = new JButton(imi_sendface);
 			jbt_sendface.setPressedIcon(imi_sendface);
@@ -147,7 +156,7 @@ public class GroupChat extends JFrame{
 			jbt_sendface.setBounds(10, 275, 25, 25);
 			mainpanel.add(jbt_sendface);
 			
-			//·¢ËÍÍ¼Æ¬
+			//å‘é€å›¾ç‰‡
 			ImageIcon imi_sendpicture = new ImageIcon("Image/sendpicture.png");
 			JButton jbt_sendpicture = new JButton(imi_sendpicture);
 			jbt_sendpicture.setPressedIcon(imi_sendpicture);
@@ -155,7 +164,7 @@ public class GroupChat extends JFrame{
 			jbt_sendpicture.setBounds(35, 275, 40, 25);
 			mainpanel.add(jbt_sendpicture);
 			
-			//·¢ËÍÓïÒô
+			//å‘é€è¯­éŸ³
 			ImageIcon imi_sendvoice = new ImageIcon("Image/sendvoice.png");
 			JButton jbt_sendvoice = new JButton(imi_sendvoice);
 			jbt_sendvoice.setPressedIcon(imi_sendvoice);
@@ -163,7 +172,7 @@ public class GroupChat extends JFrame{
 			jbt_sendvoice.setBounds(75, 275, 25, 25);
 			mainpanel.add(jbt_sendvoice);
 			
-			//·¢ËÍÊÓÆµ
+			//å‘é€è§†é¢‘
 			ImageIcon imi_sendvideo = new ImageIcon("Image/sendvideo.png");
 			JButton jbt_sendvideo = new JButton(imi_sendvideo);
 			jbt_sendvideo.setPressedIcon(imi_sendvideo);
@@ -171,7 +180,7 @@ public class GroupChat extends JFrame{
 			jbt_sendvideo.setBounds(100, 275, 25, 25);
 			mainpanel.add(jbt_sendvideo);
 			
-			//·¢ËÍ½ØÍ¼
+			//å‘é€æˆªå›¾
 			ImageIcon imi_sendsc = new ImageIcon("Image/sendsc.png");
 			JButton jbt_sendsc = new JButton(imi_sendsc);
 			jbt_sendsc.setPressedIcon(imi_sendsc);
@@ -179,47 +188,26 @@ public class GroupChat extends JFrame{
 			jbt_sendsc.setBounds(125, 275, 40, 25);
 			mainpanel.add(jbt_sendsc);
 			
-			//ÍË³öÈº
-			JButton jbt_quitgroup = new JButton("ÍË³ö¸ÃÈº");
-			jbt_quitgroup.setFont(new Font("Î¢ÈíÑÅºÚ",Font.PLAIN,10));
-			jbt_quitgroup.setBounds(510, 370, 80, 20);
-			mainpanel.add(jbt_quitgroup);
-			jbt_quitgroup.addActionListener(new ActionListener(){
+			//åˆ é™¤è¯¥å¥½å‹æŒ‰é’®
+			JButton jbt_dele_friend = new JButton("åˆ é™¤è¯¥å¥½å‹");
+			jbt_dele_friend.setBounds(380, 260,120, 30);
+			mainpanel.add(jbt_dele_friend);
+			final JFrame tt = this;
+			jbt_dele_friend.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-					mygroup.deleuser(mydata.getID());
-					mydata.delegroup(mygroup.getID());
+					mydata.delefriend(myfriend.getID());
 					tt.hide();
 				}});
 			
-			
-			//ÔÚÏßÓÃ»§ÁĞ±í
-			JList jl_up = new JList();
-			JScrollPane jsp_up = new JScrollPane(jl_up);
-			jsp_up.setBounds(450, 60, 140, 150);
-			mainpanel.add(jsp_up);
-			JLabel jlb_up = new JLabel("ÔÚÏßÓÃ»§");
-			jlb_up.setFont(new Font("Î¢ÈíÑÅºÚ",Font.PLAIN,10));
-			jlb_up.setBounds(450, 45, 100, 15);
-			mainpanel.add(jlb_up);
-			
-			//ÀëÏßÓÃ»§ÁĞ±í
-			JList jl_down = new JList();
-			JScrollPane jsp_down = new JScrollPane(jl_down);
-			jsp_down.setBounds(450, 240, 140, 120);
-			mainpanel.add(jsp_down);
-			JLabel jlb_down = new JLabel("ÀëÏßÓÃ»§");
-			jlb_down.setFont(new Font("Î¢ÈíÑÅºÚ",Font.PLAIN,10));
-			jlb_down.setBounds(450, 225, 100, 15);
-			mainpanel.add(jlb_down);
 		}
 	}
 	
 	public static void main(String[] args)
 	{
-		group mygroup = new group("5555","Èí¼ş12¼¶");
 		userdata mydata = new userdata("418084903","Hurray",new ImageIcon("Image/picture"),1);
-		new GroupChat(mygroup,mydata);
+		frienddata myfriend = new frienddata("329340496","å°å†›å†›",new ImageIcon("Image/fr_picture.png"),1);
+		new PrivateChat(myfriend,mydata);
 	}
 }

@@ -1,4 +1,4 @@
-package MyQQ;
+package Interface;
 
 import javax.swing.*;
 
@@ -13,18 +13,18 @@ import java.awt.event.MouseMotionAdapter;
 
 public class MainInterface extends JFrame{
 	
-	MainInterface(String ID,int status)
+	public MainInterface(String ID,int status)
 	{
 		MainInterface2 mif = new MainInterface2(ID,status);
-		//JFrame¿ò
-		//this.setTitle("ÁÄÌìÈí¼ş^^");
-		mif.setResizable(false);//²»¿Éµ÷Õû´óĞ¡
-		mif.setUndecorated(true);//²»ÏÔÊ¾±ß¿ò
+		//JFrameæ¡†
+		//this.setTitle("èŠå¤©è½¯ä»¶^^");
+		mif.setResizable(false);//ä¸å¯è°ƒæ•´å¤§å°
+		mif.setUndecorated(true);//ä¸æ˜¾ç¤ºè¾¹æ¡†
 		mif.setLocationRelativeTo(null);
 		mif.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mif.setSize(300, 800);
 		mif.setVisible(true);
-		mif.setLocation(500,0);//Ê¹½çÃæ¿¿ÉÏÏÔÊ¾
+		mif.setLocation(500,0);//ä½¿ç•Œé¢é ä¸Šæ˜¾ç¤º
 		
 	}
 	
@@ -35,47 +35,47 @@ public class MainInterface extends JFrame{
 	
 	public class MainInterface2 extends JFrame
 	{
-		//¸öÈËĞÅÏ¢
+		//ä¸ªäººä¿¡æ¯
 		userdata mydata;
 		private String my_name;
 		private String my_ID;
 		private int my_status;
 		private ImageIcon my_picture;
 		
-		//½çÃæÍ¼Æ¬
-		ImageIcon MI_back = new ImageIcon("Image/back2.jpg");//±³¾°Í¼Æ¬
-		ImageIcon MI_pr = new ImageIcon("Image/pr.png");//Ë½ÁÄÍ¼±ê
-		ImageIcon MI_gr = new ImageIcon("Image/gr.png");//ÈºÁÄÍ¼±ê
-		private   boolean   startDrag   =   false;  //ÍÏ¶¯¼ì²â 
-		private   Point   p   =   null;   //Êó±êÎ»ÖÃ
+		//ç•Œé¢å›¾ç‰‡
+		ImageIcon MI_back = new ImageIcon("Image/back2.jpg");//èƒŒæ™¯å›¾ç‰‡
+		ImageIcon MI_pr = new ImageIcon("Image/pr.png");//ç§èŠå›¾æ ‡
+		ImageIcon MI_gr = new ImageIcon("Image/gr.png");//ç¾¤èŠå›¾æ ‡
+		private   boolean   startDrag   =   false;  //æ‹–åŠ¨æ£€æµ‹ 
+		private   Point   p   =   null;   //é¼ æ ‡ä½ç½®
 		
 		public MainInterface2(String ID,int status)
-		{	//»ñÈ¡¸öÈËĞÅÏ¢(my_name,my_picture)(my_ID,my_statusÖ±½Ó´ÓµÇÂ½½çÃæLanded¶ÁÈ¡)
+		{	//è·å–ä¸ªäººä¿¡æ¯(my_name,my_picture)(my_ID,my_statusç›´æ¥ä»ç™»é™†ç•Œé¢Landedè¯»å–)
 			my_ID=ID;
 			my_status=status;
 			my_name="Hurray";
 			my_picture= new ImageIcon("Image/picture.png");
-			mydata=new userdata(my_ID,my_name,my_picture,my_status);//´Ó·şÎñÆ÷¶ÁÈ¡Õâ¸öÊı¾İ£¡£¡£¡£¡
-			//mydataĞèÒª½¨Á¢Ïß³Ì²»¶ÏË¢ĞÂ
+			mydata=new userdata(my_ID,my_name,my_picture,my_status);//ä»æœåŠ¡å™¨è¯»å–è¿™ä¸ªæ•°æ®ï¼ï¼ï¼ï¼
+			//mydataéœ€è¦å»ºç«‹çº¿ç¨‹ä¸æ–­åˆ·æ–°
 			frienddata myself = new frienddata(mydata.getID(),mydata.getname(),mydata.getpicture(),mydata.other_getstatus());
-			mydata.addfriend(myself);//×Ô¼ºÊÇ×Ô¼ºµÄºÃÓÑ
-			frienddata fr_zxj = new frienddata("329340496","Ğ¡¾ü¾ü",new ImageIcon("Image/fr_picture.png"),0);
+			mydata.addfriend(myself);//è‡ªå·±æ˜¯è‡ªå·±çš„å¥½å‹
+			frienddata fr_zxj = new frienddata("329340496","å°å†›å†›",new ImageIcon("Image/fr_picture.png"),0);
 			mydata.addfriend(fr_zxj);
-			group trygroup = new group("23333","³¢ÊÔ½¨Á¢µÄÈº");
+			group trygroup = new group("23333","å°è¯•å»ºç«‹çš„ç¾¤");
 			mydata.addgroup(trygroup);
 			
-			//»ñÈ¡ºÃÓÑÁĞ±í¼°ºÃÓÑĞÅÏ¢(name,ID,picture,status,)¡¢ÈºÁĞ±í
+			//è·å–å¥½å‹åˆ—è¡¨åŠå¥½å‹ä¿¡æ¯(name,ID,picture,status,)ã€ç¾¤åˆ—è¡¨
 			
 			
 			
-			//GUI½çÃæ
-				//mainpanel¿ò(±³¾°)
+			//GUIç•Œé¢
+				//mainpanelæ¡†(èƒŒæ™¯)
 			Image img=MI_back.getImage();
 			ImagePanel mainpanel = new ImagePanel(img);
 			add(mainpanel);
-			mainpanel.setLayout(null);/*ÕâÒ»¾ä·Ç³£ÖØÒª£¬Èç¹ûÃ»ÓĞÕâ¾ä£¬ºóÃæµÄ×é¼ş½«Ã»·¨°²ÅÅÎ»ÖÃ*/
+			mainpanel.setLayout(null);/*è¿™ä¸€å¥éå¸¸é‡è¦ï¼Œå¦‚æœæ²¡æœ‰è¿™å¥ï¼Œåé¢çš„ç»„ä»¶å°†æ²¡æ³•å®‰æ’ä½ç½®*/
 			
-			//Êó±êÍÏ¶¯(copy from CSDN)
+			//é¼ æ ‡æ‹–åŠ¨(copy from CSDN)
 					addMouseListener(new   MouseAdapter()
 					{   
 						 public   void   mousePressed(MouseEvent   e)
@@ -100,7 +100,7 @@ public class MainInterface extends JFrame{
 						}   
 					});
 			
-					//¹Ø±Õ°´Å¥
+					//å…³é—­æŒ‰é’®
 			ImageIcon exit1 = new ImageIcon("Image/exit1.png");
 			ImageIcon exit2 = new ImageIcon("Image/exit2.png");
 			ImageIcon exit3 = new ImageIcon("Image/exit3.png");
@@ -117,7 +117,7 @@ public class MainInterface extends JFrame{
 				}
 			});
 			
-				//×îĞ¡»¯°´Å¥
+				//æœ€å°åŒ–æŒ‰é’®
 			ImageIcon minimize1 = new ImageIcon("Image/minimize1.png");
 			ImageIcon minimize2 = new ImageIcon("Image/minimize2.png");
 			ImageIcon minimize3 = new ImageIcon("Image/minimize3.png");
@@ -133,39 +133,39 @@ public class MainInterface extends JFrame{
 				}
 			});
 					
-				//Í·Ïñ
+				//å¤´åƒ
 			Image IMG_my_picture = my_picture.getImage();
 			ImagePanel IMP_my_picture = new ImagePanel(IMG_my_picture);
 			IMP_my_picture.setBounds(20,20,80,80);
 			mainpanel.add(IMP_my_picture);
 			
-				//Ãû×Ö
+				//åå­—
 			JLabel jl_my_name = new JLabel(my_name);
-			jl_my_name.setFont(new Font("Î¢ÈíÑÅºÚ",Font.PLAIN,20));
+			jl_my_name.setFont(new Font("å¾®è½¯é›…é»‘",Font.PLAIN,20));
 			jl_my_name.setForeground(new Color(0,0,0));
 			jl_my_name.setBounds(120, 25, 100, 40);
 			mainpanel.add(jl_my_name);
 			
 				//ID
 			JLabel jl_my_ID = new JLabel("("+my_ID+")");
-			jl_my_ID.setFont(new Font("Î¢ÈíÑÅºÚ",Font.PLAIN,15));
+			jl_my_ID.setFont(new Font("å¾®è½¯é›…é»‘",Font.PLAIN,15));
 			jl_my_ID.setForeground(new Color(0,0,150));
 			jl_my_ID.setBounds(120, 60, 100, 20);
 			mainpanel.add(jl_my_ID);
 			
-				//ÉèÖÃ¸öÈËĞÅÏ¢
+				//è®¾ç½®ä¸ªäººä¿¡æ¯
 			ImageIcon IMI_setting = new ImageIcon("Image/setting.png");
 			JButton jbt_setting = new JButton(IMI_setting);
 			jbt_setting.setPressedIcon(IMI_setting);
 			jbt_setting.setRolloverIcon(IMI_setting);
 			jbt_setting.setBounds(100, 700, 30, 30);
 			mainpanel.add(jbt_setting);
-			//ÕâÀïĞèÒª¼ÓºÃ¶à¶«Î÷£¬ÕâÀï¿ÉÒÔÉèÖÃĞÕÃûºÍÍ·Ïñ£¬²¢½«¶şÕß´«¸ø·şÎñÆ÷Êı¾İ¿â¸üĞÂ£¬ĞèÒªĞÂ½¨Ò³Ãæ
+			//è¿™é‡Œéœ€è¦åŠ å¥½å¤šä¸œè¥¿ï¼Œè¿™é‡Œå¯ä»¥è®¾ç½®å§“åå’Œå¤´åƒï¼Œå¹¶å°†äºŒè€…ä¼ ç»™æœåŠ¡å™¨æ•°æ®åº“æ›´æ–°ï¼Œéœ€è¦æ–°å»ºé¡µé¢
 			jbt_setting.addActionListener(new act_jbt_setting());
 			
 			
-				//Ë½ÁÄpanel_pr
-			//ĞèÒªÌí¼ÓÏß³Ì²»¶ÏË¢ĞÂ
+				//ç§èŠpanel_pr
+			//éœ€è¦æ·»åŠ çº¿ç¨‹ä¸æ–­åˆ·æ–°
 			JList jl_pr = new JList();
 			final JScrollPane jsp_pr = new JScrollPane(jl_pr);
 			jsp_pr.setBounds(10, 160, 280, 500);
@@ -178,8 +178,8 @@ public class MainInterface extends JFrame{
 			}
 			mainpanel.add(jsp_pr);
 			
-				//ÈºÁÄpanel_gr
-			//ĞèÒªÌí¼ÓÏß³Ì²»¶ÏË¢ĞÂ
+				//ç¾¤èŠpanel_gr
+			//éœ€è¦æ·»åŠ çº¿ç¨‹ä¸æ–­åˆ·æ–°
 			JList jl_gr = new JList();
 			final JScrollPane jsp_gr = new JScrollPane(jl_gr);
 			jsp_gr.setBounds(10, 160, 280, 500);
@@ -193,7 +193,7 @@ public class MainInterface extends JFrame{
 			
 			mainpanel.add(jsp_gr);
 			
-				//Ñ¡ÔñË½ÁÄ¡¢ÈºÁÄ
+				//é€‰æ‹©ç§èŠã€ç¾¤èŠ
 			JButton jbt_pr = new JButton(MI_pr);
 			jbt_pr.setPressedIcon(MI_pr);
 			jbt_pr.setRolloverIcon(MI_pr);
@@ -210,16 +210,16 @@ public class MainInterface extends JFrame{
 					jsp_pr.setVisible(true);
 					jsp_gr.setVisible(false);
 				}
-			});/*Òş²ØÈºÁÄÁĞ±í£¬ÏÔÊ¾Ë½ÁÄÁĞ±í*/
+			});/*éšè—ç¾¤èŠåˆ—è¡¨ï¼Œæ˜¾ç¤ºç§èŠåˆ—è¡¨*/
 			jbt_gr.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e)
 				{
 					 jsp_gr.setVisible(true);
 					 jsp_pr.setVisible(false);
 				}
-			});/*Òş²ØË½ÁÄÁĞ±í£¬ÏÔÊ¾ÈºÁÄÁĞ±í*/
+			});/*éšè—ç§èŠåˆ—è¡¨ï¼Œæ˜¾ç¤ºç¾¤èŠåˆ—è¡¨*/
 			
-				//²éÕÒºÃÓÑ¡¢Èº
+				//æŸ¥æ‰¾å¥½å‹ã€ç¾¤
 			ImageIcon imi_add = new ImageIcon("Image/add.png");
 			JButton jbt_add = new JButton(imi_add);
 			jbt_add.setPressedIcon(imi_add);
@@ -228,7 +228,7 @@ public class MainInterface extends JFrame{
 			mainpanel.add(jbt_add);
 			jbt_add.addActionListener(new act_add());
 			
-			//ĞÂ½¨Èº
+			//æ–°å»ºç¾¤
 			ImageIcon imi_addgroup = new ImageIcon("Image/addgroup.png");
 			JButton jbt_addgroup = new JButton(imi_addgroup);
 			jbt_addgroup.setPressedIcon(imi_addgroup);
@@ -238,31 +238,31 @@ public class MainInterface extends JFrame{
 			jbt_addgroup.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) 
 				{
-					//ĞÂ½¨Ò³Ãæ
+					//æ–°å»ºé¡µé¢
 					JFrame jfm_addgroup = new JFrame();
-					jfm_addgroup.setTitle("ĞÂ½¨Èº");
+					jfm_addgroup.setTitle("æ–°å»ºç¾¤");
 					jfm_addgroup.setLocationRelativeTo(null);
 					jfm_addgroup.setDefaultCloseOperation(jfm_addgroup.HIDE_ON_CLOSE);
 					jfm_addgroup.setSize(300, 150);
 					jfm_addgroup.setVisible(true);
 					
-					//ĞÂ½¨Panel
+					//æ–°å»ºPanel
 					JPanel jpn_addgroup = new JPanel();
 					jpn_addgroup.setLayout(null);
 					jfm_addgroup.add(jpn_addgroup);
 					
-					//ÇëÊäÈëÈºÃû
-					JLabel jlb_entername = new JLabel("ÇëÊäÈëÈºÃû£º");
+					//è¯·è¾“å…¥ç¾¤å
+					JLabel jlb_entername = new JLabel("è¯·è¾“å…¥ç¾¤åï¼š");
 					jlb_entername.setBounds(20, 20, 150, 30);
 					jpn_addgroup.add(jlb_entername);
 					
-					//ÊäÈë¿ò
+					//è¾“å…¥æ¡†
 					JTextField jtf_entername = new JTextField();
 					jtf_entername.setBounds(120,20,120,30);
 					jpn_addgroup.add(jtf_entername);
 					
-					//ÉêÇë°´Å¥
-					JButton jbt_newgroup = new JButton("ÉêÇë");
+					//ç”³è¯·æŒ‰é’®
+					JButton jbt_newgroup = new JButton("ç”³è¯·");
 					jbt_newgroup.setBounds(120, 70, 70, 30);
 					jpn_addgroup.add(jbt_newgroup);
 					jbt_newgroup.addActionListener(new newgroup());
@@ -273,73 +273,73 @@ public class MainInterface extends JFrame{
 		
 		
 		
-		//ÉèÖÃ°´Å¥Action
+		//è®¾ç½®æŒ‰é’®Action
 		class act_jbt_setting implements ActionListener
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				//ÏÔÊ¾ÉèÖÃÃæ°åjfm_setting
+				//æ˜¾ç¤ºè®¾ç½®é¢æ¿jfm_setting
 				JFrame jfm_setting = new JFrame();
-				jfm_setting.setTitle("ÉèÖÃ");
+				jfm_setting.setTitle("è®¾ç½®");
 				jfm_setting.setLocationRelativeTo(null);
 				jfm_setting.setDefaultCloseOperation(jfm_setting.HIDE_ON_CLOSE);
 				jfm_setting.setSize(300, 300);
 				jfm_setting.setVisible(true);
 				
-				//½¨Á¢Ö÷Panel
+				//å»ºç«‹ä¸»Panel
 				JPanel jpn_setting = new JPanel();
 				jfm_setting.add(jpn_setting);
-				jpn_setting.setLayout(null);/*ÕâÒ»¾ä·Ç³£ÖØÒª£¬Èç¹ûÃ»ÓĞÕâ¾ä£¬ºóÃæµÄ×é¼ş½«Ã»·¨°²ÅÅÎ»ÖÃ*/
+				jpn_setting.setLayout(null);/*è¿™ä¸€å¥éå¸¸é‡è¦ï¼Œå¦‚æœæ²¡æœ‰è¿™å¥ï¼Œåé¢çš„ç»„ä»¶å°†æ²¡æ³•å®‰æ’ä½ç½®*/
 				
-				//´òÓ¡Í·Ïñ
+				//æ‰“å°å¤´åƒ
 				Image IMG_my_picture = my_picture.getImage();
 				ImagePanel IMP_my_picture = new ImagePanel(IMG_my_picture);
 				IMP_my_picture.setBounds(20,20,80,80);
 				jpn_setting.add(IMP_my_picture);
 				
-				//ĞŞ¸ÄÍ·Ïñ
-				JButton jbt_cgpicture = new JButton("ĞŞ¸ÄÍ·Ïñ");
-				jbt_cgpicture.setFont(new Font("Î¢ÈíÑÅºÚ",Font.PLAIN,10));
+				//ä¿®æ”¹å¤´åƒ
+				JButton jbt_cgpicture = new JButton("ä¿®æ”¹å¤´åƒ");
+				jbt_cgpicture.setFont(new Font("å¾®è½¯é›…é»‘",Font.PLAIN,10));
 				jbt_cgpicture.setBounds(20, 110, 80, 25);
 				jpn_setting.add(jbt_cgpicture);
-				jbt_cgpicture.addActionListener(null);//ÕâÀïĞèÒªĞ´
+				jbt_cgpicture.addActionListener(null);//è¿™é‡Œéœ€è¦å†™
 				
-				//´òÓ¡ID
-				JLabel jl_my_ID = new JLabel("ÕËºÅ£º"+my_ID);
-				jl_my_ID.setFont(new Font("Î¢ÈíÑÅºÚ",Font.PLAIN,15));
+				//æ‰“å°ID
+				JLabel jl_my_ID = new JLabel("è´¦å·ï¼š"+my_ID);
+				jl_my_ID.setFont(new Font("å¾®è½¯é›…é»‘",Font.PLAIN,15));
 				jl_my_ID.setForeground(new Color(0,0,150));
 				jl_my_ID.setBounds(130, 60, 200, 30);
 				jpn_setting.add(jl_my_ID);
 				
-				//ĞÕÃû
-					//´òÓ¡¡°êÇ³Æ£º¡±
-				JLabel jl_my_name = new JLabel("êÇ³Æ£º");
-				jl_my_name.setFont(new Font("Î¢ÈíÑÅºÚ",Font.PLAIN,15));
+				//å§“å
+					//æ‰“å°â€œæ˜µç§°ï¼šâ€
+				JLabel jl_my_name = new JLabel("æ˜µç§°ï¼š");
+				jl_my_name.setFont(new Font("å¾®è½¯é›…é»‘",Font.PLAIN,15));
 				jl_my_name.setForeground(new Color(0,0,150));
 				jl_my_name.setBounds(130, 100, 200, 30);
 				jpn_setting.add(jl_my_name);
-					//ĞŞ¸Ä¿ò
+					//ä¿®æ”¹æ¡†
 				JTextField jfm_newname = new JTextField(my_name);
 				jfm_newname.setBounds(175, 100, 100, 30);
 				jpn_setting.add(jfm_newname);
 				
-				//ĞŞ¸Ä×´Ì¬
-				String[] status = {"ÒşÉí","ÔÚÏß"};
+				//ä¿®æ”¹çŠ¶æ€
+				String[] status = {"éšèº«","åœ¨çº¿"};
 				JComboBox jcb_my_status = new JComboBox(status);
 				jcb_my_status.setSelectedIndex(1);
 				jcb_my_status.setBounds(130	,140 ,60, 20);
 				jpn_setting.add(jcb_my_status);
 				
-				//±£´æ°´Å¥
-				JButton jbt_save = new JButton("±£´æ");
-				jbt_save.setFont(new Font("Î¢ÈíÑÅºÚ",Font.PLAIN,10));
+				//ä¿å­˜æŒ‰é’®
+				JButton jbt_save = new JButton("ä¿å­˜");
+				jbt_save.setFont(new Font("å¾®è½¯é›…é»‘",Font.PLAIN,10));
 				jbt_save.setBounds(150, 200, 80, 25);
 				jpn_setting.add(jbt_save);
-				jbt_save.addActionListener(null);//ÕâÀïĞèÒªĞ´
+				jbt_save.addActionListener(null);//è¿™é‡Œéœ€è¦å†™
 				
-				//ĞŞ¸ÄÃÜÂë
-				JButton jbt_cgcode = new JButton("ĞŞ¸ÄÃÜÂë");
-				jbt_cgcode.setFont(new Font("Î¢ÈíÑÅºÚ",Font.PLAIN,10));
+				//ä¿®æ”¹å¯†ç 
+				JButton jbt_cgcode = new JButton("ä¿®æ”¹å¯†ç ");
+				jbt_cgcode.setFont(new Font("å¾®è½¯é›…é»‘",Font.PLAIN,10));
 				jbt_cgcode.setBounds(50, 200, 80, 25);
 				jpn_setting.add(jbt_cgcode);
 				jbt_cgcode.addActionListener(new act_cgcode());
@@ -367,53 +367,53 @@ public class MainInterface extends JFrame{
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				//ĞÂÌíÒ»¸öJFrame
+				//æ–°æ·»ä¸€ä¸ªJFrame
 				final JFrame jfm_cgcode = new JFrame();
-				jfm_cgcode.setTitle("ĞŞ¸ÄÃÜÂë");
+				jfm_cgcode.setTitle("ä¿®æ”¹å¯†ç ");
 				jfm_cgcode.setLocationRelativeTo(null);
 				jfm_cgcode.setDefaultCloseOperation(jfm_cgcode.HIDE_ON_CLOSE);
 				jfm_cgcode.setSize(300, 300);
 				jfm_cgcode.setVisible(true);
 				
-				//Ìí¼ÓÒ»¸öÖ÷JPanel
+				//æ·»åŠ ä¸€ä¸ªä¸»JPanel
 				JPanel jpn_cgcode = new JPanel();
 				jfm_cgcode.add(jpn_cgcode);
-				jpn_cgcode.setLayout(null);/*ÕâÒ»¾ä·Ç³£ÖØÒª£¬Èç¹ûÃ»ÓĞÕâ¾ä£¬ºóÃæµÄ×é¼ş½«Ã»·¨°²ÅÅÎ»ÖÃ*/
+				jpn_cgcode.setLayout(null);/*è¿™ä¸€å¥éå¸¸é‡è¦ï¼Œå¦‚æœæ²¡æœ‰è¿™å¥ï¼Œåé¢çš„ç»„ä»¶å°†æ²¡æ³•å®‰æ’ä½ç½®*/
 				
-				//ÊäÈë¾ÉÃÜÂë
-					//ÎÄ×ÖÌáÊ¾
-				JLabel jl_oldcode = new JLabel("ÇëÊäÈëÄúµÄÃÜÂë£º");
-				jl_oldcode.setFont(new Font("Î¢ÈíÑÅºÚ",Font.PLAIN,15));
+				//è¾“å…¥æ—§å¯†ç 
+					//æ–‡å­—æç¤º
+				JLabel jl_oldcode = new JLabel("è¯·è¾“å…¥æ‚¨çš„å¯†ç ï¼š");
+				jl_oldcode.setFont(new Font("å¾®è½¯é›…é»‘",Font.PLAIN,15));
 				jl_oldcode.setForeground(new Color(0,0,150));
 				jl_oldcode.setBounds(20, 20, 140, 30);
 				jpn_cgcode.add(jl_oldcode);
-					//ĞŞ¸Ä¿ò
+					//ä¿®æ”¹æ¡†
 				JTextField jfm_oldcode = new JTextField();
 				jfm_oldcode.setBounds(150, 20, 100, 30);
 				jpn_cgcode.add(jfm_oldcode);
 				
-				//ĞÂÃÜÂë
-					//ÎÄ×ÖÌáÊ¾
-				JLabel jl_newcode = new JLabel("ÇëÊäÈëĞÂÃÜÂë£º");
-				jl_newcode.setFont(new Font("Î¢ÈíÑÅºÚ",Font.PLAIN,15));
+				//æ–°å¯†ç 
+					//æ–‡å­—æç¤º
+				JLabel jl_newcode = new JLabel("è¯·è¾“å…¥æ–°å¯†ç ï¼š");
+				jl_newcode.setFont(new Font("å¾®è½¯é›…é»‘",Font.PLAIN,15));
 				jl_newcode.setForeground(new Color(0,0,150));
 				jl_newcode.setBounds(20, 120, 140, 30);
 				jpn_cgcode.add(jl_newcode);
-					//ĞŞ¸Ä¿ò
+					//ä¿®æ”¹æ¡†
 				JTextField jfm_newcode = new JTextField();
 				jfm_newcode.setBounds(150, 120, 100, 30);
 				jpn_cgcode.add(jfm_newcode);
 				
-				//È·¶¨ĞŞ¸Ä°´Å¥
-				JButton jbt_cgcode_y = new JButton("ĞŞ¸ÄÃÜÂë");
-				jbt_cgcode_y.setFont(new Font("Î¢ÈíÑÅºÚ",Font.PLAIN,10));
+				//ç¡®å®šä¿®æ”¹æŒ‰é’®
+				JButton jbt_cgcode_y = new JButton("ä¿®æ”¹å¯†ç ");
+				jbt_cgcode_y.setFont(new Font("å¾®è½¯é›…é»‘",Font.PLAIN,10));
 				jbt_cgcode_y.setBounds(150, 200, 80, 25);
 				jpn_cgcode.add(jbt_cgcode_y);
-				jbt_cgcode_y.addActionListener(new act_savecode());//ĞèÒªÖØĞÂĞ´£¬ĞèÒªÓë·şÎñÆ÷Êı¾İ¿âÑéÖ¤
+				jbt_cgcode_y.addActionListener(new act_savecode());//éœ€è¦é‡æ–°å†™ï¼Œéœ€è¦ä¸æœåŠ¡å™¨æ•°æ®åº“éªŒè¯
 				
-				//È¡Ïû°´Å¥
-				JButton jbt_cgcode_n = new JButton("È¡Ïû");
-				jbt_cgcode_n.setFont(new Font("Î¢ÈíÑÅºÚ",Font.PLAIN,10));
+				//å–æ¶ˆæŒ‰é’®
+				JButton jbt_cgcode_n = new JButton("å–æ¶ˆ");
+				jbt_cgcode_n.setFont(new Font("å¾®è½¯é›…é»‘",Font.PLAIN,10));
 				jbt_cgcode_n.setBounds(50, 200, 80, 25);
 				jpn_cgcode.add(jbt_cgcode_n);
 				jbt_cgcode_n.addActionListener(new ActionListener(){
@@ -440,28 +440,28 @@ public class MainInterface extends JFrame{
 
 			public void actionPerformed(ActionEvent e) 
 			{
-				//ĞÂ½¨JFrame
+				//æ–°å»ºJFrame
 				JFrame jfm_add = new JFrame();
-				jfm_add.setTitle("²éÕÒ");
+				jfm_add.setTitle("æŸ¥æ‰¾");
 				jfm_add.setLocationRelativeTo(null);
 				jfm_add.setDefaultCloseOperation(jfm_add.HIDE_ON_CLOSE);
 				jfm_add.setSize(300, 300);
 				jfm_add.setVisible(true);
-				jfm_add.setResizable(false);//²»¿Éµ÷Õû´óĞ¡
+				jfm_add.setResizable(false);//ä¸å¯è°ƒæ•´å¤§å°
 				
-				//ĞÂ½¨JPanel
+				//æ–°å»ºJPanel
 				JPanel jpn_add = new JPanel();
 				jpn_add.setLayout(null);
 				jfm_add.add(jpn_add);
 				
-				//µ¥Ñ¡°´Å¥£º²éÕÒÈË/Èº
+				//å•é€‰æŒ‰é’®ï¼šæŸ¥æ‰¾äºº/ç¾¤
 				choice =-1;
 				JPanel jpn_jrb_add = new JPanel();
 				jpn_jrb_add.setBounds(0, 20, 200, 100);
 				jpn_add.add(jpn_jrb_add);
-				JRadioButton jrb_1 = new JRadioButton("²éÕÒÓÃ»§");
+				JRadioButton jrb_1 = new JRadioButton("æŸ¥æ‰¾ç”¨æˆ·");
 				jpn_jrb_add.add(jrb_1);
-				JRadioButton jrb_2 = new JRadioButton("²éÕÒÈº");
+				JRadioButton jrb_2 = new JRadioButton("æŸ¥æ‰¾ç¾¤");
 				jpn_jrb_add.add(jrb_2);
 				ButtonGroup group = new ButtonGroup();
 				group.add(jrb_1);
@@ -479,19 +479,19 @@ public class MainInterface extends JFrame{
 					}
 				});
 				
-				//LabelÌáÊ¾
-				JLabel jlb_add = new JLabel("ÇëÊäÈëÕËºÅ£º");
-				jlb_add.setFont(new Font("Î¢ÈíÑÅºÚ",Font.PLAIN,15));
+				//Labelæç¤º
+				JLabel jlb_add = new JLabel("è¯·è¾“å…¥è´¦å·ï¼š");
+				jlb_add.setFont(new Font("å¾®è½¯é›…é»‘",Font.PLAIN,15));
 				jlb_add.setBounds(20, 150, 200, 30);
 				jpn_add.add(jlb_add);
 				
-				//ÊäÈë¿ò
-				//JTextField jtf_add = new JTextField();ÔÚÀàÖĞ¶¨Òå
+				//è¾“å…¥æ¡†
+				//JTextField jtf_add = new JTextField();åœ¨ç±»ä¸­å®šä¹‰
 				jtf_add.setBounds(120, 150, 100, 30);
 				jpn_add.add(jtf_add);
 				
-				//¡±²éÕÒ¡°°´Å¥
-				JButton jbt_search = new JButton("²éÕÒ");
+				//â€æŸ¥æ‰¾â€œæŒ‰é’®
+				JButton jbt_search = new JButton("æŸ¥æ‰¾");
 				jbt_search.setBounds(150,200, 70, 30);
 				jbt_search.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e) 
@@ -517,10 +517,10 @@ public class MainInterface extends JFrame{
 			public void actionPerformed(ActionEvent e) 
 			{
 				int judge = 1;
-				//ÅĞ¶ÏÊÇ·ñÉêÇë³É¹¦£¬³É¹¦judgeÉèÎª1
+				//åˆ¤æ–­æ˜¯å¦ç”³è¯·æˆåŠŸï¼ŒæˆåŠŸjudgeè®¾ä¸º1
 				if(judge==0)
 				{
-					//ĞÂ½¨Ò³Ãæ
+					//æ–°å»ºé¡µé¢
 					JFrame jfm_newgroup = new JFrame();
 					jfm_newgroup.setTitle("error");
 					jfm_newgroup.setLocationRelativeTo(null);
@@ -528,22 +528,22 @@ public class MainInterface extends JFrame{
 					jfm_newgroup.setSize(300, 150);
 					jfm_newgroup.setVisible(true);
 					
-					//ĞÂ½¨Panel
+					//æ–°å»ºPanel
 					JPanel jpn_newgroup = new JPanel();
 					jpn_newgroup.setLayout(null);
 					jfm_newgroup.add(jpn_newgroup);
 					
-					//ÇëÊäÈëÈºÃû
-					JLabel jlb_entername = new JLabel("ÉêÇëÊ§°Ü£¡ÇëÖØÊÔ£¡");
+					//è¯·è¾“å…¥ç¾¤å
+					JLabel jlb_entername = new JLabel("ç”³è¯·å¤±è´¥ï¼è¯·é‡è¯•ï¼");
 					jlb_entername.setBounds(20, 20, 250, 30);
 					jpn_newgroup.add(jlb_entername);
 				}
 				else
 				{
-					//»ñÈ¡newgroupID
+					//è·å–newgroupID
 					String newgroupID="null";
 					
-					//ĞÂ½¨Ò³Ãæ
+					//æ–°å»ºé¡µé¢
 					JFrame jfm_newgroup = new JFrame();
 					jfm_newgroup.setTitle("seccess");
 					jfm_newgroup.setLocationRelativeTo(null);
@@ -551,13 +551,13 @@ public class MainInterface extends JFrame{
 					jfm_newgroup.setSize(300, 150);
 					jfm_newgroup.setVisible(true);
 					
-					//ĞÂ½¨Panel
+					//æ–°å»ºPanel
 					JPanel jpn_newgroup = new JPanel();
 					jpn_newgroup.setLayout(null);
 					jfm_newgroup.add(jpn_newgroup);
 					
-					//ÇëÊäÈëÈºÃû
-					JLabel jlb_entername = new JLabel("ÉêÇë³É¹¦£¡ÄúµÄÈººÅÊÇ£º"+newgroupID);
+					//è¯·è¾“å…¥ç¾¤å
+					JLabel jlb_entername = new JLabel("ç”³è¯·æˆåŠŸï¼æ‚¨çš„ç¾¤å·æ˜¯ï¼š"+newgroupID);
 					jlb_entername.setBounds(20, 20, 250, 30);
 					jpn_newgroup.add(jlb_entername);
 				}
@@ -570,64 +570,64 @@ public class MainInterface extends JFrame{
 			search_person(String s)
 			{
 				//GUI
-					//JFrameÉèÖÃ
-				this.setTitle("²éÕÒÓÃ»§");
+					//JFrameè®¾ç½®
+				this.setTitle("æŸ¥æ‰¾ç”¨æˆ·");
 				this.setLocationRelativeTo(null);
 				this.setDefaultCloseOperation(this.HIDE_ON_CLOSE);
 				this.setSize(300, 200);
 				this.setVisible(true);
-				this.setResizable(false);//²»¿Éµ÷Õû´óĞ¡
+				this.setResizable(false);//ä¸å¯è°ƒæ•´å¤§å°
 				
-					//JPanelÉèÖÃ
+					//JPanelè®¾ç½®
 				JPanel jpn_search = new JPanel();
 				jpn_search.setLayout(null);
 				this.add(jpn_search);
 				
-				//²éÕÒ
-				search_yn = 0;//ĞèÒªÌí¼Ó²éÕÒÅĞ¶Ï
+				//æŸ¥æ‰¾
+				search_yn = 0;//éœ€è¦æ·»åŠ æŸ¥æ‰¾åˆ¤æ–­
 				if(search_yn==0)
 				{
-					JLabel jlb_search_err = new JLabel("Ã»ÓĞÕÒµ½£¡");
+					JLabel jlb_search_err = new JLabel("æ²¡æœ‰æ‰¾åˆ°ï¼");
 					jlb_search_err.setBounds(20, 20, 150, 30);
 					jpn_search.add(jlb_search_err);
 				}
 				else
 				{
 					//Label
-					JLabel jlb_search_sec = new JLabel("³É¹¦ÕÒµ½£¬ÊÇ·ñÌí¼ÓºÃÓÑ£¿");
+					JLabel jlb_search_sec = new JLabel("æˆåŠŸæ‰¾åˆ°ï¼Œæ˜¯å¦æ·»åŠ å¥½å‹ï¼Ÿ");
 					jlb_search_sec.setBounds(20, 20, 200, 30);
 					jpn_search.add(jlb_search_sec);
 					
-					//±»²éÕÒÓÃ»§µÄÍ·Ïñ
+					//è¢«æŸ¥æ‰¾ç”¨æˆ·çš„å¤´åƒ
 					ImageIcon imi_search = new ImageIcon("Image/fr_picture.png");
-						//ÕâÀïĞèÒªµ÷ÓÃÓÃ»§Í·Ïñ,²¢°ÑÉÏÒ»ĞĞÀ¨ºÅÀïµÄ¶«Î÷É¾µô
+						//è¿™é‡Œéœ€è¦è°ƒç”¨ç”¨æˆ·å¤´åƒ,å¹¶æŠŠä¸Šä¸€è¡Œæ‹¬å·é‡Œçš„ä¸œè¥¿åˆ æ‰
 					Image img_fr_picture=imi_search.getImage();
 					ImagePanel imp_fr_picture = new ImagePanel(img_fr_picture);
 					imp_fr_picture.setBounds(20,50,40,40);
 					jpn_search.add(imp_fr_picture);
 					
-					//±»²éÕÒÓÃ»§µÄêÇ³Æ
+					//è¢«æŸ¥æ‰¾ç”¨æˆ·çš„æ˜µç§°
 					String str_search_name = "searchname";
 					JLabel jlb_search_name = new JLabel(str_search_name);
 					jlb_search_name.setBounds(90,50, 150,30);
 					jpn_search.add(jlb_search_name);
 					
-					//±»²éÕÒÓÃ»§µÄID
+					//è¢«æŸ¥æ‰¾ç”¨æˆ·çš„ID
 					String str_search_ID = "searchID";
 					JLabel jlb_search_ID = new JLabel("("+str_search_ID+")");
 					jlb_search_ID.setBounds(90,80, 150,30);
 					jpn_search.add(jlb_search_ID);
 					
-					//°´Å¥ÊÇ
-					JButton jbt_yes = new JButton("ÊÇ");
+					//æŒ‰é’®æ˜¯
+					JButton jbt_yes = new JButton("æ˜¯");
 					jbt_yes.setBounds(70, 120, 70, 30);
 					jpn_search.add(jbt_yes);
-					jbt_yes.addActionListener(null);//ÒÔºóÔÙĞ´
+					jbt_yes.addActionListener(null);//ä»¥åå†å†™
 					
-					//°´Å¥·ñ
+					//æŒ‰é’®å¦
 					final JFrame t = this;
-					JButton jbt_no = new JButton("·ñ");
-					jbt_no.setFont(new Font("Î¢ÈíÑÅºÚ",Font.PLAIN,10));
+					JButton jbt_no = new JButton("å¦");
+					jbt_no.setFont(new Font("å¾®è½¯é›…é»‘",Font.PLAIN,10));
 					jbt_no.setBounds(170, 120, 70, 30);
 					jpn_search.add(jbt_no);
 					jbt_no.addActionListener(new ActionListener(){
@@ -647,56 +647,56 @@ public class MainInterface extends JFrame{
 			search_group(String s)
 			{
 				//GUI
-					//JFrameÉèÖÃ
-				this.setTitle("²éÕÒÈº");
+					//JFrameè®¾ç½®
+				this.setTitle("æŸ¥æ‰¾ç¾¤");
 				this.setLocationRelativeTo(null);
 				this.setDefaultCloseOperation(this.HIDE_ON_CLOSE);
 				this.setSize(300, 200);
 				this.setVisible(true);
-				this.setResizable(false);//²»¿Éµ÷Õû´óĞ¡
+				this.setResizable(false);//ä¸å¯è°ƒæ•´å¤§å°
 				
-					//JPanelÉèÖÃ
+					//JPanelè®¾ç½®
 				JPanel jpn_search = new JPanel();
 				jpn_search.setLayout(null);
 				this.add(jpn_search);
 				
-				//²éÕÒ
-				search_yn = 0;//ĞèÒªÌí¼Ó²éÕÒÅĞ¶Ï
+				//æŸ¥æ‰¾
+				search_yn = 0;//éœ€è¦æ·»åŠ æŸ¥æ‰¾åˆ¤æ–­
 				if(search_yn==0)
 				{
-					JLabel jlb_search_err = new JLabel("Ã»ÓĞÕÒµ½£¡");
+					JLabel jlb_search_err = new JLabel("æ²¡æœ‰æ‰¾åˆ°ï¼");
 					jlb_search_err.setBounds(20, 20, 150, 30);
 					jpn_search.add(jlb_search_err);
 				}
 				else
 				{
 					//Label
-					JLabel jlb_search_sec = new JLabel("³É¹¦ÕÒµ½£¬ÊÇ·ñ¼ÓÈë¸ÃÈº£¿");
+					JLabel jlb_search_sec = new JLabel("æˆåŠŸæ‰¾åˆ°ï¼Œæ˜¯å¦åŠ å…¥è¯¥ç¾¤ï¼Ÿ");
 					jlb_search_sec.setBounds(20, 20, 200, 30);
 					jpn_search.add(jlb_search_sec);
 					
-					//±»²éÕÒÈºµÄêÇ³Æ
+					//è¢«æŸ¥æ‰¾ç¾¤çš„æ˜µç§°
 					String str_search_name = "searchname";
 					JLabel jlb_search_name = new JLabel(str_search_name);
 					jlb_search_name.setBounds(90,50, 150,30);
 					jpn_search.add(jlb_search_name);
 					
-					//±»²éÕÒÈºµÄID
+					//è¢«æŸ¥æ‰¾ç¾¤çš„ID
 					String str_search_ID = "searchID";
 					JLabel jlb_search_ID = new JLabel("("+str_search_ID+")");
 					jlb_search_ID.setBounds(90,80, 150,30);
 					jpn_search.add(jlb_search_ID);
 					
-					//°´Å¥ÊÇ
-					JButton jbt_yes = new JButton("ÊÇ");
+					//æŒ‰é’®æ˜¯
+					JButton jbt_yes = new JButton("æ˜¯");
 					jbt_yes.setBounds(70, 120, 70, 30);
 					jpn_search.add(jbt_yes);
-					jbt_yes.addActionListener(null);//ÒÔºóÔÙĞ´
+					jbt_yes.addActionListener(null);//ä»¥åå†å†™
 					
-					//°´Å¥·ñ
+					//æŒ‰é’®å¦
 					final JFrame t = this;
-					JButton jbt_no = new JButton("·ñ");
-					jbt_no.setFont(new Font("Î¢ÈíÑÅºÚ",Font.PLAIN,10));
+					JButton jbt_no = new JButton("å¦");
+					jbt_no.setFont(new Font("å¾®è½¯é›…é»‘",Font.PLAIN,10));
 					jbt_no.setBounds(170, 120, 70, 30);
 					jpn_search.add(jbt_no);
 					jbt_no.addActionListener(new ActionListener(){
@@ -715,34 +715,34 @@ public class MainInterface extends JFrame{
 			userpanel(final frienddata myfriend,int i)
 			{
 				this.myfriend=myfriend;
-				//iÓÃÀ´ËãpanelµÄÎ»ÖÃ,´Ó0¿ªÊ¼
+				//iç”¨æ¥ç®—panelçš„ä½ç½®,ä»0å¼€å§‹
 				
-				//panelµÄÉèÖÃ
+				//panelçš„è®¾ç½®
 				this.setLayout(null);
 				this.setBounds(7, 40*i, 250, 40);
 				
-				//Í·Ïñ
+				//å¤´åƒ
 				ImageIcon imi_picture = myfriend.getpicture();
 				Image img_picture=imi_picture.getImage();
 				ImagePanel imp_picture = new ImagePanel(img_picture);
 				imp_picture.setBounds(5,5,30,30);
 				this.add(imp_picture);
 				
-				//Ãû×Ö
+				//åå­—
 				JLabel jl_name = new JLabel(myfriend.getname());
-				jl_name.setFont(new Font("Î¢ÈíÑÅºÚ",Font.PLAIN,15));
+				jl_name.setFont(new Font("å¾®è½¯é›…é»‘",Font.PLAIN,15));
 				jl_name.setForeground(new Color(0,0,0));
 				jl_name.setBounds(45, 5, 100, 15);
 				this.add(jl_name);
 				
 				//ID
 				JLabel jl_ID = new JLabel("("+myfriend.getID()+")");
-				jl_ID.setFont(new Font("Î¢ÈíÑÅºÚ",Font.PLAIN,10));
+				jl_ID.setFont(new Font("å¾®è½¯é›…é»‘",Font.PLAIN,10));
 				jl_ID.setForeground(new Color(0,0,150));
 				jl_ID.setBounds(45, 25, 100, 10);
 				this.add(jl_ID);
 				
-				//×´Ì¬
+				//çŠ¶æ€
 				if(myfriend.getstatus()==1)
 				{
 					ImageIcon imi_status = new ImageIcon("Image/green.png");
@@ -760,7 +760,7 @@ public class MainInterface extends JFrame{
 					this.add(imp_status);
 				}
 				
-				//¼àÌıÊÂ¼ş
+				//ç›‘å¬äº‹ä»¶
 				this.addMouseListener(new MouseListener(){
 
 					public void mouseClicked(MouseEvent arg0) {
@@ -785,13 +785,13 @@ public class MainInterface extends JFrame{
 							jfm_err.setSize(300, 150);
 							jfm_err.setVisible(true);
 							
-							//ĞÂ½¨Panel
+							//æ–°å»ºPanel
 							JPanel jpn_err = new JPanel();
 							jpn_err.setLayout(null);
 							jfm_err.add(jpn_err);
 							
 							//JLabel
-							JLabel jlb_entername = new JLabel("Äú²»´æÔÚ¸ÃºÃÓÑ£¡");
+							JLabel jlb_entername = new JLabel("æ‚¨ä¸å­˜åœ¨è¯¥å¥½å‹ï¼");
 							jlb_entername.setBounds(20, 20, 250, 30);
 							jpn_err.add(jlb_entername);
 						}
@@ -831,27 +831,27 @@ public class MainInterface extends JFrame{
 			grouppanel(final group mygroup,int i)
 			{
 				this.mygroup=mygroup;
-				//iÓÃÀ´ËãpanelµÄÎ»ÖÃ,´Ó0¿ªÊ¼
+				//iç”¨æ¥ç®—panelçš„ä½ç½®,ä»0å¼€å§‹
 				
-				//panelµÄÉèÖÃ
+				//panelçš„è®¾ç½®
 				this.setLayout(null);
 				this.setBounds(7, 40*i, 250, 40);
 				
-				//Ãû×Ö
+				//åå­—
 				JLabel jl_name = new JLabel(mygroup.getname());
-				jl_name.setFont(new Font("Î¢ÈíÑÅºÚ",Font.PLAIN,15));
+				jl_name.setFont(new Font("å¾®è½¯é›…é»‘",Font.PLAIN,15));
 				jl_name.setForeground(new Color(0,0,0));
 				jl_name.setBounds(10, 5, 100, 15);
 				this.add(jl_name);
 				
 				//ID
 				JLabel jl_ID = new JLabel("("+mygroup.getID()+")");
-				jl_ID.setFont(new Font("Î¢ÈíÑÅºÚ",Font.PLAIN,10));
+				jl_ID.setFont(new Font("å¾®è½¯é›…é»‘",Font.PLAIN,10));
 				jl_ID.setForeground(new Color(0,0,150));
 				jl_ID.setBounds(10, 25, 100, 10);
 				this.add(jl_ID);
 				
-				//¼àÌıÊÂ¼ş
+				//ç›‘å¬äº‹ä»¶
 				this.addMouseListener(new MouseListener(){
 
 					public void mouseClicked(MouseEvent arg0) {
@@ -876,13 +876,13 @@ public class MainInterface extends JFrame{
 							jfm_err.setSize(300, 150);
 							jfm_err.setVisible(true);
 							
-							//ĞÂ½¨Panel
+							//æ–°å»ºPanel
 							JPanel jpn_err = new JPanel();
 							jpn_err.setLayout(null);
 							jfm_err.add(jpn_err);
 							
 							//JLabel
-							JLabel jlb_entername = new JLabel("Äú²»´æÔÚ¸ÃÈº£¡");
+							JLabel jlb_entername = new JLabel("æ‚¨ä¸å­˜åœ¨è¯¥ç¾¤ï¼");
 							jlb_entername.setBounds(20, 20, 250, 30);
 							jpn_err.add(jlb_entername);
 						}
@@ -967,7 +967,7 @@ class frienddata
 
 class userdata
 {
-	//Õâ¸öÀà×ö¿Í»§¶Ë±¾µØÊı¾İ¿â£¬ÆäÖĞºÜ¶à¶«Î÷ĞèÒªÖØ¸Ä£¡£¡£¡
+	//è¿™ä¸ªç±»åšå®¢æˆ·ç«¯æœ¬åœ°æ•°æ®åº“ï¼Œå…¶ä¸­å¾ˆå¤šä¸œè¥¿éœ€è¦é‡æ”¹ï¼ï¼ï¼
 	public String ID;
 	public String name;
 	public ImageIcon picture;
@@ -1014,9 +1014,9 @@ class userdata
 		group_num=0;
 		this.code=null;
 		this.ID="null";
-		this.name="null";//´Ó·şÎñÆ÷ÖØ¶Á
-		this.picture=null;//´Ó·şÎñÆ÷ÖØ¶Á
-		this.status=0;//´Ó·şÎñÆ÷ÖØ¶Á
+		this.name="null";//ä»æœåŠ¡å™¨é‡è¯»
+		this.picture=null;//ä»æœåŠ¡å™¨é‡è¯»
+		this.status=0;//ä»æœåŠ¡å™¨é‡è¯»
 	}
 	userdata(String ID,String name,ImageIcon picture,int status)
 	{
@@ -1109,7 +1109,7 @@ class userdata
 	}
 	public int delefriend(String id)
 	{
-		//Èç¹û³É¹¦É¾³ı·µ»Ø1£»·ñÔò·µ»Ø0
+		//å¦‚æœæˆåŠŸåˆ é™¤è¿”å›1ï¼›å¦åˆ™è¿”å›0
 		int YN=0;
 		for(int i=0;i<this.num_fr;i++)
 		{
@@ -1143,7 +1143,7 @@ class userdata
 		this.group_num++;
 	}
 	//public int delegroup()
-	//ÓÉÓÚºÃÓÑ±ØĞë´ÓÈºÖĞÍË³ö£¬ËùÒÔÈºÖĞdeleÈËÒÔ°üº¬´Ë¹¦ÄÜ¡£µ«Òª×¢Òâ£¬Èç¹û×öÁËÉ¾Èº²Ù×÷ĞèÒªÖØĞÂ¸üĞÂÓÃ»§µÄuserdata
+	//ç”±äºå¥½å‹å¿…é¡»ä»ç¾¤ä¸­é€€å‡ºï¼Œæ‰€ä»¥ç¾¤ä¸­deleäººä»¥åŒ…å«æ­¤åŠŸèƒ½ã€‚ä½†è¦æ³¨æ„ï¼Œå¦‚æœåšäº†åˆ ç¾¤æ“ä½œéœ€è¦é‡æ–°æ›´æ–°ç”¨æˆ·çš„userdata
 	public int getgroup_num()
 	{
 		return this.group_num;
@@ -1243,7 +1243,7 @@ class group
 	}
 	public int deleuser(String ID)
 	{
-		//Èç¹û³É¹¦É¾³ı·µ»Ø1£»·ñÔò·µ»Ø0
+		//å¦‚æœæˆåŠŸåˆ é™¤è¿”å›1ï¼›å¦åˆ™è¿”å›0
 				int YN=0;
 				for(int i=0;i<this.getNum();i++)
 				{
