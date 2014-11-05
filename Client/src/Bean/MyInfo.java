@@ -29,8 +29,23 @@ public class MyInfo {
     private String name;
     private ImageIcon picture;
     private int status;
-    private List friendList = new ArrayList();
-    private List groupList = new ArrayList();
+    private List friendList;
+    private List groupList;
+    
+    public MyInfo (String test) {
+       friendList  = new ArrayList();
+       groupList = new ArrayList();
+       FriendInfo aNewFriend = new FriendInfo();
+       aNewFriend.setName("二翔");
+       aNewFriend.setID("125125");
+       aNewFriend.setPictureUrl("Image/fr_picture.png"); 
+       friendList.add(aNewFriend);
+       
+       GroupInfo aNewGroup = new GroupInfo();
+       aNewGroup.setGroupID("233333");
+       aNewGroup.setGroupName("我是群名");
+       groupList.add(aNewGroup);
+    }
 
     public String getID() {
         return ID;

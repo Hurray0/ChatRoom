@@ -22,7 +22,7 @@ public class GroupChat extends JFrame {
     private GroupInfo groupinfo;
     private MyInfo myinfo;
 
-    GroupChat(GroupInfo groupinfo, MyInfo myinfo)//之所以要用PrivateChat_2代替它是因为setUndecorated会将Frame中所有东西清除
+    public GroupChat(GroupInfo groupinfo, MyInfo myinfo)//之所以要用PrivateChat_2代替它是因为setUndecorated会将Frame中所有东西清除
     {
         GroupChat_2 prc = new GroupChat_2(groupinfo, myinfo);
         prc.setResizable(false);

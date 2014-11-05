@@ -10,6 +10,8 @@
  */
 package Interface.MainInterface.MainInterface_Panel;
 
+import Action.MainFrame.MouseClickAGroup;
+import Bean.*;
 import Interface.GroupChat;
 import java.awt.Color;
 import java.awt.Font;
@@ -18,7 +20,6 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import Bean.*;
 
 /**
  * @Author hurray
@@ -51,7 +52,7 @@ public class Panel_Group extends JPanel {
         jl_ID.setBounds(10, 25, 100, 10);
         this.add(jl_ID);
         
-        //添加监听事件
-        
+        //监听事件
+        this.addMouseListener(new MouseClickAGroup(thisgroup, myinfo));
     }
 }

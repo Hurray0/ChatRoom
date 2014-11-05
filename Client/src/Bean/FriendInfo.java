@@ -47,6 +47,10 @@ public class FriendInfo {
     public void setPicture(ImageIcon picture) {
         this.picture = picture;
     }
+    
+    public void setPictureUrl(String pictureUrl) {
+        this.picture = new ImageIcon(pictureUrl);
+    }
 
     public int getStatus() {
         return status;

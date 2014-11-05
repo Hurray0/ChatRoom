@@ -43,7 +43,7 @@ public class MainInterface extends JFrame {
     public class MainInterface2 extends JFrame {
 
         //个人信息
-        MyInfo myinfo = new MyInfo();
+        MyInfo myinfo = new MyInfo("test");
 
         //界面图片
         ImageIcon MI_back = new ImageIcon("Image/back2.jpg");//背景图片
@@ -146,22 +146,21 @@ public class MainInterface extends JFrame {
             JList jl_pr = new JList();
             JScrollPane jsp_pr = new JScrollPane(jl_pr);
             jsp_pr.setBounds(10, 160, 280, 500);
-            FriendInfo friendInfo;
             for (int i = 0; i < myinfo.getGroupList().size(); i++) {
                 Panel_User fr_userpanel = new Panel_User(myinfo, i);
+                jsp_pr.add(fr_userpanel);
                 jl_pr.add(fr_userpanel);
-                mainpanel.add(jsp_pr);
             }
+            mainpanel.add(jsp_pr);
 
             //群聊panel_gr
             //需要添加线程不断刷新
             JList jl_gr = new JList();
             JScrollPane jsp_gr = new JScrollPane(jl_gr);
             jsp_gr.setBounds(10, 160, 280, 500);
-            GroupInfo groupInfo;
-            for (int i = 0; i < myinfo.getGroupList().size(); i++) {
-                groupInfo = (GroupInfo) myinfo.getGroupList().get(i);
+            for (int i = 0; i < myinfo.getGroupList().size(); i++) {     
                 Panel_Group fr_grouppanel = new Panel_Group(myinfo, i);
+                jsp_gr.add(fr_grouppanel);
                 jl_gr.add(fr_grouppanel);
             }
 
