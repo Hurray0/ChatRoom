@@ -1,2 +1,4 @@
 /Client/dist/
 *.class
+/Client/build/
+/Server/nbproject/private/
