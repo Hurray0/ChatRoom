@@ -2,3 +2,4 @@
 *.class
 /Client/build/
 /Server/nbproject/private/
+/Server/build/
